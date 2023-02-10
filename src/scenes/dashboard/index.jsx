@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import {
   Box,
   Button,
@@ -5,7 +6,6 @@ import {
   IconButton,
   Typography,
   useTheme,
-  Item,
 } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
@@ -24,6 +24,51 @@ import ProgressCircle from "../../components/ProgressCircle";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const deshBoardInformationArray = [
+    {
+      title: "12,361",
+      subtitle: "Emails Sent",
+      progress: "0.75",
+      increase: "+14%",
+      icon: (
+        <EmailIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />
+      ),
+    },
+    {
+      title: "431,225",
+      subtitle: "Sales Obtained",
+      progress: "0.50",
+      increase: "+21%",
+      icon: (
+        <PointOfSaleIcon
+          sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+        />
+      ),
+    },
+    {
+      title: "32,441",
+      subtitle: "New Clients",
+      progress: "0.30",
+      increase: "+5%",
+      icon: (
+        <PersonAddIcon
+          sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+        />
+      ),
+    },
+    {
+      title: "1,325,134",
+      subtitle: "Traffic Received",
+      progress: "0.80",
+      increase: "+43%",
+      icon: (
+        <TrafficIcon
+          sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+        />
+      ),
+    },
+  ];
 
   return (
     <Grid container spacing={1} rowSpacing={2} mb={2}>
@@ -55,106 +100,30 @@ const Dashboard = () => {
       </Grid>
 
       {/* ROW 1 */}
-      <Grid item xs={12} md={3}>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          ml={2}
-          mr={2}
-          pt={3}
-          pb={3}
-        >
-          <StatBox
-            title="12,361"
-            subtitle="Emails Sent"
-            progress="0.75"
-            increase="+14%"
-            icon={
-              <EmailIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+      {deshBoardInformationArray.map(
+        ({ title, subtitle, progress, increase, icon }, key) => (<Grid item xs={12} md={3} key={key}>
+            <Box
+              gridColumn="span 3"
+              backgroundColor={colors.primary[400]}
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              ml={2}
+              mr={2}
+              pt={3}
+              pb={3}
+            >
+              <StatBox
+                title={title}
+                subtitle={subtitle}
+                progress={progress}
+                increase={increase}
+                icon={icon}
               />
-            }
-          />
-        </Box>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          ml={2}
-          mr={2}
-          pt={3}
-          pb={3}
-        >
-          <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
-            progress="0.50"
-            increase="+21%"
-            icon={
-              <PointOfSaleIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          ml={2}
-          mr={2}
-          pt={3}
-          pb={3}
-        >
-          <StatBox
-            title="32,441"
-            subtitle="New Clients"
-            progress="0.30"
-            increase="+5%"
-            icon={
-              <PersonAddIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          ml={2}
-          mr={2}
-          pt={3}
-          pb={3}
-        >
-          <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
-            progress="0.80"
-            increase="+43%"
-            icon={
-              <TrafficIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-      </Grid>
+            </Box>
+          </Grid>)
+      )}
+
 
       {/* ROW 2 */}
       <Grid item xs={12} md={8} mt={1}>
@@ -266,7 +235,7 @@ const Dashboard = () => {
           ml={2}
           mr={2}
           p={3}
-          height='300px'
+          height="300px"
         >
           <Typography variant="h5" fontWeight="600">
             Campaign
@@ -298,13 +267,9 @@ const Dashboard = () => {
           ml={2}
           pt={3}
           pb={3}
-          height='300px'
+          height="300px"
         >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ padding: "0 30px" }}
-          >
+          <Typography variant="h5" fontWeight="600" sx={{ padding: "0 30px" }}>
             Sales Quantity
           </Typography>
           <Box height="250px" mt="-20px">
@@ -320,7 +285,7 @@ const Dashboard = () => {
           ml={2}
           mr={2}
           p={3}
-          height='300px'
+          height="300px"
         >
           <Typography
             variant="h5"
