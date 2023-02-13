@@ -1,8 +1,8 @@
 import { useTheme } from "@mui/material";
 import { ResponsiveChoropleth } from "@nivo/geo";
-import { geoFeatures } from "../data/mockGeoFeatures";
-import { tokens } from "../theme";
-import { mockGeographyData as data } from "../data/mockData";
+import { geoFeatures } from "../data/MockGeoFeatures";
+import { tokens } from "../Theme";
+import { mockGeographyData as data } from "../data/MockData";
 
 const GeographyChart = ({ isDashboard = false }) => {
   const theme = useTheme();
