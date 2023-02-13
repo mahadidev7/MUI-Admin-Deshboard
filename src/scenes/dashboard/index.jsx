@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable array-callback-return */
 import {
   Box,
@@ -101,7 +102,8 @@ const Dashboard = () => {
 
       {/* ROW 1 */}
       {deshBoardInformationArray.map(
-        ({ title, subtitle, progress, increase, icon }, key) => (<Grid item xs={12} md={3} key={key}>
+        ({ title, subtitle, progress, increase, icon }, key) => (
+          <Grid item xs={12} md={3} key={key}>
             <Box
               gridColumn="span 3"
               backgroundColor={colors.primary[400]}
@@ -121,9 +123,9 @@ const Dashboard = () => {
                 icon={icon}
               />
             </Box>
-          </Grid>)
+          </Grid>
+        )
       )}
-
 
       {/* ROW 2 */}
       <Grid item xs={12} md={8} mt={1}>
@@ -299,6 +301,21 @@ const Dashboard = () => {
           </Box>
         </Box>
       </Grid>
+
+      <a
+        href="https://mahadidev7-portfolio.web.app/"
+        target="_blank"
+        style={{
+          margin: "20px auto",
+          padding: "10px 20px",
+          color: colors.grey[100],
+          textDecoration: "none",
+          backgroundColor: colors.primary[400]
+          
+        }}
+      >
+        This is a portfolio Project. Create by Mahadidev7
+      </a>
     </Grid>
   );
 };
